@@ -7,11 +7,11 @@ class AbstractManager
     function __construct()
     {
 
-        $connexion = "mysql:host=".$dbInfo["host"].";port=3306;charset=utf8;dbname=".$dbInfo["db_name"];
+        $connexion = "mysql:host=db.3wa.io;port=3306;charset=utf8;dbname=laurelineagabibrac_e-commerce";
         $this->db = new PDO(
             $connexion,
-            $dbInfo["user"],
-            $dbInfo["password"]
+            "laurelineagabibrac",
+            "c8b4d35a0077655c5f327ec2af4c0eac"
         );
     }
 }

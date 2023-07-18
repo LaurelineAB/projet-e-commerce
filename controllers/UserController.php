@@ -76,6 +76,8 @@ class UserController extends AbstractController {
                 {
                     //Login
                     $_SESSION['user'] = $user;
+                    //Initialize empty cart
+                    $_SESSION['cart'] = [];
                     
                     //Render à rajouter
                 }
