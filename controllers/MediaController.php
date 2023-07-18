@@ -48,7 +48,8 @@ class MediaController extends AbstratcController {
             
             if ($media === $media)
             {
-                $media = $this->manager->editMedia($name, $url);
+                
+                $media = $this->manager->editMedia(new Media($name, $url));
                 
                 //Render à rajouter 
             }
