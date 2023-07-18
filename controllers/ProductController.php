@@ -93,7 +93,7 @@ class ProductController extends AbstractController
         $category_id = $_GET['category_id'];
         $this->cm->getCategoryById($category_id);
         $products = $this->manager->getProductsByCategory();
-        $this->render()
+        $this->render("categories/category.phtml", $products);
     }
 }
 

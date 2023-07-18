@@ -38,7 +38,7 @@ class Router
             }
             else if($_GET['route'] === "category" && isset($_GET['category_id']))
             {
-                $this->pc->
+                $this->pc->getProductsByCategory();
             }
         }
         else

@@ -1,0 +1,16 @@
+Liste des classes :
+    - User.php
+        -> attributs : id, first_name, last_name, email, password, adress, inscription_date
+        -> constructeur : first_name, last_name, email, password, adress
+    - Product.php
+        -> attributs : id, name, description, price
+        -> constructeur : name, description, price
+    - Order.php
+        -> attributs : id, date, amount, user_id, products
+        -> constructeur : date, amount, user_id
+    - Media.php
+        -> attributs : id, name, url, product_id
+        -> constructeur : name, url, product_id
+    - Category.php
+        -> attributs : id, name, description
+        -> constructeur : name, description
