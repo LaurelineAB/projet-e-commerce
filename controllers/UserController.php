@@ -5,12 +5,14 @@ require "AbstractController.php";
 class UserController extends AbstractController {
     
     //ATTRIBUTES
-    private UserManager $manager;
+    private UserManager $um;
+    private CategoryManager $cm;
     
     //CONSTRUCTOR
     public function __construct()
     {
-        $this->manager = new UserManager();
+        $this->um = new UserManager();
+        $this->cm = new CategoryManager();
     }
     
     //METHODS
@@ -21,7 +23,7 @@ class UserController extends AbstractController {
         if(isset($_POST['submit-new-user']))
         {
             //Check if email is already registered
-            if($this->manager->getUserByEmail($_POST['register-email']) === null)
+            if($this->um->getUserByEmail($_POST['register-email']) === null)
             {
                 if(!empty($_POST['register-first-name']))
                 {
@@ -44,7 +46,7 @@ class UserController extends AbstractController {
                 //Get all adress components in one variable
                 if(!empty($_POST['register-adress-number']) && !empty($_POST['register-adress-street']) && !empty($_POST['register-adress-postal-code']) && !empty($_POST['register-adress-city']))
                 {
-                    $adress = $_POST['register-adress-number']." ".$_POST['register-adress-street']." ".$_POST['register-adress-street']." ".$_POST['register-adress-postal-code']." ".$_POST['register-adress-city'];
+                    $adress = $_POST['register-adress-number']." ".$_POST['register-adress-street']." ".$_POST['register-adress-postal-code']." ".$_POST['register-adress-city'];
                 }
                 //Set inscription date
                 date_default_timezone_set("Europe/Paris");
@@ -55,10 +57,16 @@ class UserController extends AbstractController {
                 $user->setInscription_date($date);
                 
                 //Add user to database
-                $this->manager->addUser($user);
+                $this->um->addUser($user);
                 
-                //Render à ajouter
+                //Send user to login page
+                $this->render("auth/login.phtml", []);
             }
+        }
+        else
+        {
+            //Show register form
+            $this->render("auth/register.phtml", []);
         }
     }
     
@@ -68,9 +76,9 @@ class UserController extends AbstractController {
         if(isset($_POST['submit-login']))
         {
             //Check if email exists
-            if($this->manager->getUserByEmail($_POST(['login-email'])))
+            if($this->um->getUserByEmail($_POST(['login-email'])))
             {
-                $user = $this->manager->getUserByEmail($_POST(['login-email']));
+                $user = $this->um->getUserByEmail($_POST(['login-email']));
                 //Check if password is correct
                 if(password_verify($_POST(['login-password']), $user->getPassword()))
                 {
@@ -79,9 +87,15 @@ class UserController extends AbstractController {
                     //Initialize empty cart
                     $_SESSION['cart'] = [];
                     
-                    //Render à rajouter
+                    //Send user to homepage, with array of categories 
+                    $this->render("homepage/homepage.phtml", $this->cm->getAllCategories());
                 }
             }
+        }
+        else
+        {
+            //Show login form
+            $this->render("auth/login.phtml", []);
         }
     }
     
@@ -118,7 +132,7 @@ class UserController extends AbstractController {
             $user->setId($_POST['edit-id']);
             
             //Call to function
-            $this->manager->editUser($user);
+            $this->um->editUser($user);
         }
     }
 }

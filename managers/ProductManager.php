@@ -34,6 +34,32 @@ class ProductManager extends AbstractManager
         }
         return $products;
     }
+    
+    //Add new product to database
+    public function newProduct(Product $product) : void
+    {
+        $query = $this->db->prepare("INSERT INTO products (name, description, price) VALUES (:name, :description, :price)");
+        $parameters =
+        [
+            'name' => $product->getName(),
+            'description' => $product->getDescription(),
+            'price' => $product->getPrice()
+        ];
+        $query->execute($parameters);
+    }
+    
+    //Edit product
+    public function editProduct(Product $product) : void
+    {
+        $query = $this->db->prepare("UPDATE products SET name = :name, description = :description, price = :price");
+        $parameters =
+        [
+            'name' => $product->getName(),
+            'description' => $product->getDescription(),
+            'price' => $product->getPrice()
+        ];
+        $query->execute($parameters);
+    }
 }
 
 ?>

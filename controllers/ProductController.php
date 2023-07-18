@@ -5,12 +5,14 @@ require "AbstractController.php";
 class ProductController extends AbstractController
 {
     //ATTRIBUTES
-    private UserManager $manager;
+    private ProductManager $manager;
+    private CategoryManager $cm;
     
     //CONSTRUCTOR
     public function __construct()
     {
-        $this->manager = new UserManager();
+        $this->manager = new ProductManager();
+        $this->cm = new CategoryManager();
     }
     
     //METHODS
@@ -84,8 +86,16 @@ class ProductController extends AbstractController
             array_splice($_SESSION['cart'], $key, 1);
         }
     }
+    
+    //Get products by category
+    public function getProductByCategory() : void
+    {
+        $category_id = $_GET['category_id'];
+        $this->cm->getCategoryById($category_id);
+        $products = $this->manager->getProductsByCategory();
+        $this->render()
+    }
 }
-
 
 ?>
 
