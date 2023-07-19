@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Never expand</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+            <ul class="navbar-nav me-auto mb-2">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <?= foreach($data as $category) ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><?= $category->getName(); ?></a>
+                    <?= foreach($allProducts as $product) ?>
+                    <ul class="dropdown-menu">
+                                <?php if($category->getId === $product->getId->$products_categories->getCategory_id) { ?>
+                                    <li><a class="dropdown-item" href="#"><?= $product->getName(); ?></a></li>
+                                <?php } ?>
+                    </ul>
+                </li>
+                <?= endforeach() ?>
+            </ul>
+            <form role="search">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
