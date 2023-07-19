@@ -2,7 +2,6 @@
 
 class Router
 {
-    // private string $route;
     private CategoryController $cc;
     private MediaController $mc;
     private OrderController $oc;
@@ -11,7 +10,6 @@ class Router
 
     public function __construct()
     {
-        // $this->route = $_GET['route'];
         $this->cc = new CategoryController();
         $this->mc = new MediaController();
         $this->oc = new OrderController();
@@ -21,7 +19,10 @@ class Router
     
     public function checkRoute()
     {
-        if(isset($this->route))
+        $categories = $this->cc>AllCategories();
+        $this->cc->render("views/partials/_header.phtml", $categories);
+        
+        if(isset($_GET['route']))
         {
             if($_GET['route'] === "homepage")
             {
@@ -43,8 +44,8 @@ class Router
         }
         else
         {
-            $categories = $this->cc->manager->getAllCategories();
-            $this->cc->render("views/homepage/homepage.phtml", $categories);
+            $categories = $this->cc->AllCategories();
+            // $this->cc->render("views/homepage/homepage.phtml", $categories);
         }
     }
 }

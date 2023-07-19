@@ -1,7 +1,5 @@
 <?php
 
-require "AbstractController.php";
-
 class UserController extends AbstractController {
     
     //ATTRIBUTES

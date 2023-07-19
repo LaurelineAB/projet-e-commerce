@@ -1,7 +1,5 @@
 <?php
 
-require_once "AbstractManager.php";
-
 class ProductManager extends AbstractManager
 {
     //Get product by id
