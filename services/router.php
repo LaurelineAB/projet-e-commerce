@@ -20,14 +20,14 @@ class Router
     public function checkRoute()
     {
         $categories = $this->cc->allCategories();
-        $this->cc->render("views/partials/_header.phtml", $categories);
+        // $this->cc->render("views/partials/_header.phtml", $categories);
         
         if(isset($_GET['route']))
         {
             if($_GET['route'] === "homepage")
             {
-                $categories = $this->cc->allCategories();
-                $this->cc->render("views/homepage/homepage.phtml", $categories);
+                // $categories = $this->cc->allCategories();
+                $this->cc->render("homepage/homepage.phtml", $categories);
             }
             else if($_GET['route'] === "register")
             {
