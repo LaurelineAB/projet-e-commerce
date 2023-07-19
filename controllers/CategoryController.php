@@ -27,7 +27,7 @@ class CategoryController extends AbstractController
         }
     }
 
-
+    
     public function edit()
     {
         if (isset($_POST['submit-edit-category'])) {
@@ -44,10 +44,13 @@ class CategoryController extends AbstractController
             }
         }
     }
-
-
-
-
+    
+    public function allCategories() 
+    {
+        $categories = getAllCategories();
+        $this->render('homepage/homepage.pĥtml'  => $categories);
+        
+    }
 
 }
 ?>
