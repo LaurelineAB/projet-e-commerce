@@ -16,9 +16,10 @@
                     <?= foreach($data as $category) ?>
                     <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="<?php 'index.php?=route=category='.$category['id'] ?>"><?= $category->getName(); ?></a></li>
+
                     </ul>
                 </li>
-                <?= endforeach() ?>
+                <?= endforeach(); ?>
             </ul>
             <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">

@@ -1,7 +1,5 @@
 <?php
 
-require "AbstractManager.php";
-
 class UserManager extends AbstractManager
 {
     //Get user by Id
