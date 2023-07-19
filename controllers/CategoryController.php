@@ -47,8 +47,8 @@ class CategoryController extends AbstractController
     
     public function allCategories() 
     {
-        $categories = getAllCategories();
-        $this->render('homepage/homepage.pĥtml'  => $categories);
+        $categories = $this->manager->getAllCategories();
+        $this->render('homepage/homepage.pĥtml', $categories);
         
     }
 
