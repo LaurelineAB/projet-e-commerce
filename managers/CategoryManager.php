@@ -19,15 +19,15 @@ class CategoryManager extends AbstractManager {
     
     public function getAllCategories()
     {
-        $query = $this->db->("SELECT * FROM categories");
+        $query = $this->db->prepare("SELECT * FROM categories");
         $query->execute();
         $results = $query->fetchAll(PDO::FETCH_ASSOC);
-        $categoryTab = [];
+        $categoriesTab = [];
         foreach ($results as $category)
         {
             $categoryInstance = new Category($category['name'], $category['description']);
             $categoryInstance->setId($category['id']);
-            $categoriesTab [] = $categoriesInstance;
+            $categoriesTab [] = $categoryInstance;
         }
         return $categoriesTab;
     }
