@@ -25,7 +25,7 @@ class MediaController extends AbstratcController {
             {
                 $media = $this->manager->insertMedia(new Media($name, $url));
                 
-                //Render à rajouter 
+                
             }
         }
         
