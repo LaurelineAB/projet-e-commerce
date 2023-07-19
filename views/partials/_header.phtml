@@ -10,17 +10,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
-                <?= foreach($data as $category) ?>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><?= $category->getName(); ?></a>
-                    <?= foreach($allProducts as $product) ?>
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    <?= foreach($categories as $category) ?>
                     <ul class="dropdown-menu">
-                                <?php if($category->getId === $product->getId->$products_categories->getCategory_id) { ?>
-                                    <li><a class="dropdown-item" href="#"><?= $product->getName(); ?></a></li>
-                                <?php } ?>
+                                    <li><a class="dropdown-item" href="renvoyer sur template des produits"><?= $category->getName(); ?></a></li>
                     </ul>
                 </li>
-                <?= endforeach() ?>
+                <?= endforeach(); ?>
             </ul>
             <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
