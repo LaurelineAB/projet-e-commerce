@@ -7,7 +7,7 @@ class User {
     private string $email;
     private string $password;
     private string $adress;
-    private date $inscription_date;
+    private ?string $inscription_date;
     
      public function __construct(string $first_name, string $last_name, string $email, string $password, string $adress){
         $this->id = null;
@@ -39,7 +39,7 @@ class User {
     
     public function getLast_name() : string
     {
-        return $this->last_nale;
+        return $this->last_name;
     }
     public function setLast_name(string $last_name) : void
     {

@@ -15,7 +15,7 @@ class UserManager extends AbstractManager
     }
     
     //Get user by email
-    public function getUserByEmail(string $email) : User
+    public function getUserByEmail(?string $email) : User
     {
         $query = $this->db->prepare("SELECT * FROM users WHERE users.email = ?");
         $query->execute([$email]);
