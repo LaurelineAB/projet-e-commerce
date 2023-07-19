@@ -40,7 +40,7 @@ class MediaManager extends AbstractManager {
         //Get the id of the newly inserted media
         $media->setId($this->db->lastInsertId());
         
-        //Return the media
+        //Return the media 
         return $media;
     }
     
